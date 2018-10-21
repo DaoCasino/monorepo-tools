@@ -9,7 +9,7 @@ We created these scripts because we couldn't find a tool that would keep the git
 
 You may need to update your `git` (tested on `2.16.1`).
 
-This repository is maintained by [shopsys/shopsys](https://github.com/shopsys/shopsys) monorepo, information about changes are in [monorepo CHANGELOG.md](https://github.com/shopsys/shopsys/blob/master/CHANGELOG.md).
+This repository is maintained by [shopsys/shopsys](https://github.com/shopsys/shopsys) monorepo, information about changes are in [monorepo CHANGELOG.md](https://github.com/shopsys/shopsys/blob/development/CHANGELOG.md).
 
 ## Quick start
 
@@ -44,7 +44,7 @@ Optionally you can specify a directory where the repository will be located by p
 
 The command will rewrite history of all mentioned repositories as if they were developed in separate subdirectories.
 
-Only branches `master` will be merged together, other branches will be kept only from first package to avoid possible branch name conflicts.
+Only branches `development` will be merged together, other branches will be kept only from first package to avoid possible branch name conflicts.
 
 ```
 ~/monorepo-tools/monorepo_build.sh \
@@ -53,7 +53,7 @@ Only branches `master` will be merged together, other branches will be kept only
 
 This may take a while, depending on the size of your repositories.
 
-Now your `master` branch should contain all packages in separate directories. For our example it would mean:
+Now your `development` branch should contain all packages in separate directories. For our example it would mean:
 * **main-repository/** - contains repository *vendor/main-repository*
 * **packages/**
   * **alpha/** - contains repository *vendor/alpha*
@@ -71,14 +71,14 @@ When you made your changes and would like to update the original repositories us
 ```
 
 This will push all relevant changes into all of your remotes.
-It will split and push your `master` branch along with all tags you added in this repository.
+It will split and push your `development` branch along with all tags you added in this repository.
 Other branches are not pushed.
 
 It may again take a while, depending on the size of your monorepo.
 
 ***Note:***  
 *The commits in the split repositories should be identical to those from the original repo, keeping the git history intact.*
-*Thus, if you have checked out the original `master` previously, you should be able to fast-forward to the new version after splitting.*  
+*Thus, if you have checked out the original `development` previously, you should be able to fast-forward to the new version after splitting.*  
 *The only known exception is a signed commit (note that GitHub signs commits made via its web UI by default).*
 *If you have signed commits in your original repository, the split commits will NOT be signed.*
 *This will prevent `monorepo_split.sh` from pushing the unsigned commits to the remote.*  
@@ -112,13 +112,13 @@ Usage: `monorepo_build.sh <remote-name>[:<subdirectory>] <remote-name>[:<subdire
 
 ### [monorepo_split.sh](./monorepo_split.sh)
 
-Split monorepo built by `monorepo_build.sh` and push all `master` branches along with all tags into specified remotes.
+Split monorepo built by `monorepo_build.sh` and push all `development` branches along with all tags into specified remotes.
 
 Usage: `monorepo_split.sh <remote-name>[:<subdirectory>] <remote-name>[:<subdirectory>] ...`
 
 ### [monorepo_add.sh](./monorepo_add.sh)
 
-Add repositories to an existing monorepo from specified remotes. The remotes must be already added to your repository and fetched. Only master branch will be added from each repo.
+Add repositories to an existing monorepo from specified remotes. The remotes must be already added to your repository and fetched. Only development branch will be added from each repo.
 
 Usage: `monorepo_add.sh <remote-name>[:<subdirectory>] <remote-name>[:<subdirectory>] ...`
 
@@ -172,7 +172,7 @@ This repository is READ-ONLY.
 If you want to [report issues](https://github.com/shopsys/shopsys/issues/new) and/or send [pull requests](https://github.com/shopsys/shopsys/compare),
 please use the main [Shopsys repository](https://github.com/shopsys/shopsys).
 
-Please, check our [Contribution Guide](https://github.com/shopsys/shopsys/blob/master/CONTRIBUTING.md) before contributing.
+Please, check our [Contribution Guide](https://github.com/shopsys/shopsys/blob/development/CONTRIBUTING.md) before contributing.
 
 ## Support
 What to do when you are in troubles or need some help? Best way is to contact us on our Slack [http://slack.shopsys-framework.com/](http://slack.shopsys-framework.com/)
