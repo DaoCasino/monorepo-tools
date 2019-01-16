@@ -33,7 +33,7 @@ for PARAM in $@; do
     $MONOREPO_SCRIPT_DIR/rewrite_history_from.sh $SUBDIRECTORY development $(git tag)
     if [ $? -eq 0 ]; then
         echo "Pushing branch 'development' and all tags into '$REMOTE'"
-        git push --tags $REMOTE development
+        git push --force --tags $REMOTE development
     else
         echo "Splitting repository for the remote '$REMOTE' failed! Not pushing anything into it."
     fi
